@@ -13,6 +13,6 @@ public record UserDto(
          String gender,
          String profile,
          String biography,
-         LocalDateTime createAt,
+         LocalDateTime createdAt,
          Boolean status) {
 }

@@ -3,6 +3,9 @@ package com.chanheng.stock1.api.user;
 import com.chanheng.stock1.api.user.web.SavedUserDto;
 import com.chanheng.stock1.api.user.web.UpdateUserDto;
 import com.chanheng.stock1.api.user.web.UserDto;
+import com.github.pagehelper.ISelect;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,8 +39,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<UserDto> findUsers() {
-        return null;
+    public PageInfo<UserDto> findUsers(int pageSize, int pageNum) {
+        PageInfo<User> userPageInfo = PageHelper.startPage(pageNum, pageSize)
+                .doSelectPageInfo(() -> userMapper.select(true));
+
+        return userMap.toUserDtoPageInfo(userPageInfo);
     }
 
     @Override

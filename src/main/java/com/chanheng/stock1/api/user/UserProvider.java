@@ -14,6 +14,7 @@ public class UserProvider {
             VALUES("dob", "#{user.dob}");
             VALUES("phone", "#{user.phone}");
             VALUES("biography", "#{user.biography}");
+            VALUES("created_at", "NOW()");
             VALUES("status", "#{user.status}");
         }}.toString();
     }
@@ -23,6 +24,15 @@ public class UserProvider {
             SELECT("*");
             FROM("users");
             WHERE("id = #{id}");
+        }}.toString();
+    }
+
+    public String buildSelectSql(){
+        return new SQL(){{
+            SELECT("*");
+            FROM("users");
+            WHERE("status = #{status}");
+            ORDER_BY("id DESC");
         }}.toString();
     }
 }

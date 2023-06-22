@@ -21,6 +21,6 @@ public class User  {
     private String password;
     private String verifiedToken;
     private LocalDateTime tokenExpiry;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private Boolean status;
 }

@@ -21,10 +21,11 @@ ext {
 	mapstructVersion = "1.5.3.Final"
 	lombokVersion = "1.18.20"
 	lombokMapstructBindingVersion = "0.2.0"
+	mybatisPageHelperVersion = "1.4.7"
 }
 
 dependencies {
-//	START: Mapstruct with lombok
+//	START: Mapstruct with lombok(for convert Model to DTO or DTO to Model)
 	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
 	implementation "org.projectlombok:lombok:${lombokVersion}"
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
@@ -39,6 +40,8 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation "com.github.pagehelper:pagehelper-spring-boot-starter:${mybatisPageHelperVersion}"
+
 }
 
 tasks.named('test') {
